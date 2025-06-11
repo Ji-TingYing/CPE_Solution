@@ -1,0 +1,21 @@
+// Beat the Spread! (UVA 10812)
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int n, s, d; 
+    cin >> n;
+
+    while(n--)
+    {
+        cin >> s >> d;
+
+        if(s < d || (s+d)%2 != 0 ) cout << "impossoble" << endl;
+        else cout << (s+d)/2 << " " << (s-d)/2 << endl;
+
+    }
+    return 0;
+}
