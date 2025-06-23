@@ -1,0 +1,16 @@
+// Back to High School Physics (UVA 10071)
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int v, t;
+
+    while(cin >> v >> t)
+    {
+        cout << 2 * v * t << endl; // V0*t + 1/2 a*t^2(v = a*t) => 2*v*t
+    }
+    return 0;
+}
