@@ -1,1 +1,30 @@
+// The Skyline Problem (UVA 105)
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int L, H, R, skyline[10001] = {0}, rightboundary = 0;
+    bool space = false;
+
+    while(cin >> L >> H >> R)
+    {
+        for(int i = L; i < R; i++)
+            if(skyline[i] < H) skyline[i] = H;
+        if(rightboundary < R) rightboundary = R;
+    }
+    for(int i = 1; i < rightboundary; i++)
+    {
+        if(skyline[i-1] != skyline[i])
+        {
+            if(space) cout << " ";
+            space = true;
+            cout << i << " " << skyline[i];
+        }
+    }
+    cout << endl;
+    return 0;
+}
 
