@@ -1,0 +1,29 @@
+// Ugly Numbers (UVA 136)
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int i, j, k = 1;
+
+    for(j = 2; k < 1510; j++)
+    {
+        i = j;
+
+        while(i%2 == 0) i /= 2;
+        while(i%3 == 0) i /= 3;
+        while(i%5 == 0) i /= 5;
+
+        if(i == 1) k++;
+        if(k == 1500) 
+        {
+            cout << "The 1500'th ugly number is " << j << endl;
+            break;
+        }
+
+    }
+    return 0;
+
+}
