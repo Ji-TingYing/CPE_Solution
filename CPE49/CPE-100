@@ -1,1 +1,32 @@
+// The 3n + 1 problem (UVA 100)
 
+#include <iostream>
+
+using namespace std;
+
+int cycleLength(int n)
+{
+    int count = 1;
+    while(n != 1)
+    {
+        if(n%2 != 0) n = 3*n+1;
+        else n = n/2;
+        count++;
+    }
+    return count;
+}
+
+int main()
+{
+    int i, j;
+    while(cin >> i >> j)
+    {
+        int Max = 0;
+
+        for(int x = min(i, j); x <= max(i, j); x++)
+        {
+            Max = max(Max, cycleLength(x));
+        }
+        cout << i << " " << j << " " << Max << endl; 
+    }
+}
