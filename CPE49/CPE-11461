@@ -15,11 +15,13 @@ int main()
 
         for(int i = a; i <= b; i++)
         {
-            int x = sqrt(a);
+            int x = sqrt(i);
 
-            if(x * x == a) count++;
+            if(x * x == i) count++;
         }
+        cout << count << endl;
 
     }
     return 0;
 }
+
