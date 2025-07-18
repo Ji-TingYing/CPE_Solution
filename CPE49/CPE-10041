@@ -25,7 +25,7 @@ int main()
         int sum = 0;
 
         for(int i = 0; i < r; i++){
-            sum += abs(s[i]-s[r/2]); //求中位數
+            sum += abs(s[i]-s[r/2]); // s[r/2]求中位數，s[i]-s[r/2]是求老大到各個家的距離，兩者相減的差加起來即是答案
         }
         cout << sum << endl;
     }
