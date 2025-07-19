@@ -1,0 +1,52 @@
+// Funny Encryption Method (UVA 10019)
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+
+    int T, N;
+
+    cin >> T;
+
+    while(T--)
+    {
+        cin >> N;
+
+        int b1 = 0, X1 = N;
+
+        while(X1)
+        {
+            b1 += X1 & 1;
+            X1 >>= 1; // 右移一位
+        }
+
+        int X2 = 0; // 累加十六進位字面值對應的十進位結果
+        int multiple = 1; // 對應的 16 的冪次 (初始為0次方)
+        X1 = N;
+        
+        while(X1)
+        {
+            X2 += (X1%10) * multiple;
+            X1/=10;
+            multiple*=16;
+        }
+/*
+N = 123
+X1 = N = 123
+(X1%10) * multiple => 123 % 10 = 3, 3 * 1 = 3
+X1 /= 10 => 123/10 = 12
+multiple *= 16 => 1 * 16(multiple 現在為16)
+*/
+        int b2 = 0;
+
+        while(X2)
+        {
+            b2 += X2 & 1;
+            X2 >>= 1;
+        }
+        cout << b1 << " " << b2 << endl;
+    }
+    return 0;
+}
