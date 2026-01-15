@@ -1,0 +1,30 @@
+// Pizza Cutting (UVA 10079)
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+
+    long long N;
+
+    while(cin >> N){
+        long long ans = 0;
+        
+        if(N < 0) break;
+
+        for(int i = N; i > 0; i--)
+            ans += i; 
+        cout << ans + 1 << endl;
+    }
+    return 0;
+}
+
+/* 公式解
+  long long n;
+  while(cin>>n && n>=0){
+    cout << n*(n+1)/2+1 << endl;
+  }
+  return 0;
+}
+*/
