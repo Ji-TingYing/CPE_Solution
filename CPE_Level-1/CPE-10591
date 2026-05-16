@@ -1,0 +1,35 @@
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main(){
+    int T, count = 1, N; 
+    cin >> T;
+
+    while(T--){
+        cin >> N;
+        int original = N;
+        set<int> visited;
+
+        while(N != 1 && visited.find(N) == visited.end()){
+            visited.insert(N);
+            int sum = 0;
+
+            while(N > 0){
+                int x = N % 10;
+                sum += x * x;
+                N /= 10;
+            }
+            N = sum;
+        }
+
+        if(N == 1) {
+            cout << "Case #" << count << ": " << original << " is a Happy number." << endl;
+        } else {
+            cout << "Case #" << count << ": " << original << " is an Unhappy number." << endl;
+        }
+        count++;
+    }
+    return 0;
+}
