@@ -1,3 +1,5 @@
+// Happy Number (UVA 10591)
+
 #include <iostream>
 #include <set>
 
