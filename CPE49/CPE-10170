@@ -1,0 +1,27 @@
+// The Hotel with Infinite Rooms (UVA 10170)
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+
+    long long s, d;
+
+    while(cin >> s >> d){
+        long long day = 0;
+        long long n = s;
+
+        while(day < d){
+            day += n;
+
+            if(day >= d){
+                cout << n << endl;
+                break;
+            }
+            n++;
+        }
+
+    }
+    return 0;
+}
