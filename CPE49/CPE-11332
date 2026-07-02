@@ -1,0 +1,42 @@
+// Summing Digits (UVA 11332)
+
+#include <iostream>
+
+using namespace std;
+
+int SumDigit(int n){
+    int sum = 0;
+    while(n>0){
+        sum += n%10;
+        n/=10;
+    }
+    return sum;
+}
+int main(){
+    int n;
+    while(cin >> n && n!=0){
+        while(n >= 10){
+            n = SumDigit(n);           
+        }
+        cout << n << endl;
+    }
+    return 0;
+}
+
+
+
+/* 速解
+#include <iostream> 
+
+using namespace std;
+
+int main(){
+    long long n;
+    while(cin >> n && n != 0)
+    {
+        if(n % 9 == 0) cout << 9 << endl;
+        else cout << n%9 << endl;
+    }
+    return 0;
+}
+*/
