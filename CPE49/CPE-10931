@@ -1,0 +1,31 @@
+// Parity (UVA 10931)
+
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+string change_Binary(int n){
+    string binary = "";
+    while(n>0){
+        binary += (n%2 == 0 ? '0' : '1');
+        n/=2;
+    }
+    reverse(binary.begin(), binary.end());
+    return binary;
+}
+
+int main(){
+    int i;
+
+    while(cin >> i && i != 0){
+        string b = change_Binary(i);
+
+        int count = 0;
+
+        for(int k = 0; k < b.length(); k++){
+            if(b[k] == '1') count++;
+        }
+        cout << "The parity of " << b << " is " << count << " (mod 2)." << endl;
+    }
+}
