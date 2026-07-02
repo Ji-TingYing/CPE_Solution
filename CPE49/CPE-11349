@@ -1,0 +1,40 @@
+// Symmetric Matrix (UVA 11349)
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int T;
+    int count = 1; //紀錄筆數
+
+    cin >> T;
+
+    while(T--){
+        char ch1, ch2;
+        long long N;
+        cin >> ch1 >> ch2 >> N;
+
+        long long element = N*N;
+        long long array[10005];
+        bool isSymmetric = true;
+
+        // 讀取元素及判斷是否小於0，元素必須為非負。
+        for(long long i = 0; i < element; i++){
+            cin >> array[i];
+
+            if(array[i]<0) isSymmetric = false;
+        }
+
+        for(long long i = 0; i < element/2; i++){
+            if(array[i] != array[element-1-i]){
+                isSymmetric = false;
+                break;
+            }
+        }
+        if(isSymmetric) cout << "Test #" << count << ": Symmetric." << endl;
+        else cout << "Test #" << count << ": Non-symmetric." << endl;
+        count++;
+    }
+    return 0;
+}
