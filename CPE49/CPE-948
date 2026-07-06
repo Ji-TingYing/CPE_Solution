@@ -1,0 +1,42 @@
+// Fibonaccimal Base (UVA 948)
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main(){
+
+    long long fib[45];
+    fib[0] = 1; fib[1] = 2;
+    int current = 1;
+
+    for(int i = 2; i < 45; i++){
+        fib[i] = fib[i-1] + fib[i-2];
+        current = i;
+        if(fib[i] > 100000000) break;
+    }
+
+    int N;
+    cin >> N;
+    while(N--){
+        long long num;
+        cin >> num;
+
+        long long temp = num;
+        string ans = "";
+        bool need = false;
+
+        for(int i = current; i >= 0; i--){
+            if(temp >= fib[i]){
+                ans += '1';
+                temp -= fib[i];
+                need = true;
+            } else if(need){
+                ans += '0';
+            }
+        }
+        cout << num << " = " << ans << " (fib)" << endl;
+    }
+    return 0;
+}
