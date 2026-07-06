@@ -1,0 +1,28 @@
+// Rotating Sentences (UVA 490)
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main(){
+
+    string sentence[105];
+    int count = 0;
+    int max_len = 0;
+
+    while(getline(cin, sentence[count])){
+        int len = sentence[count].length();
+
+        if(len > max_len) max_len = len;
+        count++;
+    }
+    for(int i = 0; i < max_len; i++){
+        for(int j = count - 1; j >= 0; j--){
+            if (i < sentence[j].length()) cout << sentence[j][i];
+            else cout << ' ';
+        }
+        cout << "\n";
+    }
+    return 0;
+}
