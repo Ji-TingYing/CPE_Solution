@@ -1,0 +1,52 @@
+// What's Cryptanalysis? (UVA 10008)
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+struct lettercount{
+    char letter;
+    int count;
+};
+
+bool compare(lettercount a, lettercount b){
+    if(a.count != b.count) return a.count > b.count;
+    return a.letter < b.letter;
+}
+
+int main(){
+    int n;
+    cin >> n;
+
+    lettercount arr[26];
+    for (int i = 0; i < 26; ++i) {
+        arr[i].letter = 'A' + i; 
+        arr[i].count = 0;
+    }
+    string s;
+    getline(cin, s);
+
+    while(n--){
+        getline(cin, s);
+        for (int i = 0; i < s.length(); i++) {
+            char c = s[i];
+
+            if (c >= 'A' && c <= 'Z') {
+                arr[c - 'A'].count++;
+            }
+            else if (c >= 'a' && c <= 'z') {
+                arr[c - 'a'].count++;
+            }
+        }
+    }
+    sort(arr, arr + 26, compare);
+
+    for (int i = 0; i < 26; ++i) {
+        if (arr[i].count > 0) {
+            cout << arr[i].letter << " " << arr[i].count << endl;
+        }
+    }
+    return 0;
+}
