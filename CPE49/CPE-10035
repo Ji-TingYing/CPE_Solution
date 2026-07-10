@@ -1,0 +1,37 @@
+// Primary Arithmetic (UVA 10035)
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    unsigned int a, b;
+
+    while(cin >> a >> b){
+        if(a==0 && b==0) break;
+
+        int carry = 0, carry_count = 0;
+
+        while(a > 0 || b > 0 || carry > 0){
+            int digit_a = a%10, digit_b = b%10;
+            int sum = digit_a + digit_b + carry;
+
+            if(sum >= 10){
+                carry = 1;
+                carry_count++;
+            }
+            else carry = 0;
+
+            a = a/10;
+            b = b/10;
+        }
+        if (carry_count == 0) {
+            cout << "No carry operation." << endl;
+        } else if (carry_count == 1) {
+            cout << "1 carry operation." << endl;
+        } else {
+            cout << carry_count << " carry operations." << endl;
+        }
+    }
+    return 0;
+}
