@@ -1,0 +1,36 @@
+// Jolly Jumpers (UVA 10038)
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main(){
+    int n, arr[3005]; 
+
+    while(cin >> n){
+        bool isJolly = true;
+        bool present[3005] = {false};
+
+        for(int i = 0; i < n; i++){
+            cin >> arr[i];
+        }
+
+        for(int i = 0; i < n-1; i++){
+            int difference = abs(arr[i] - arr[i+1]);
+            if (difference >= 1 && difference <= n-1) present[difference] = true;
+        }
+        for (int i = 1; i <= n-1; ++i) {
+            if (!present[i]) {
+                isJolly = false;
+                break; 
+            }
+        }
+        if (isJolly) {
+            cout << "Jolly\n";
+        } else {
+            cout << "Not jolly\n";
+        }
+    }
+    return 0;
+}
