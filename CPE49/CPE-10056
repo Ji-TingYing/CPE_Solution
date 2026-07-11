@@ -1,0 +1,43 @@
+// What is the Probability ? (UVA10056)
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+
+void solve(){
+    int N, I;
+    double p;
+    cin >> N >> p >> I;
+
+    // 特例處理：如果單次獲勝機率為 0，第 I 個人獲勝的機率必然為 0
+    if (p == 0.0) {
+        cout << fixed << setprecision(4) << 0.0000 << "\n";
+        return;
+    }
+
+    // 1. 計算單次失敗的機率 q
+    double q = 1.0 - p;
+
+    // 2. 計算無窮等比級數的首項 a (第 I 個人在第一輪就獲勝的機率)
+    double a = p * pow(q, I-1);
+
+    // 3. 計算無窮等比級數的公比 r (一整輪 N 個人都沒獲勝的機率)
+    double r = pow(q, N);
+
+    // 4. 計算總和 S = a / (1 - r)
+    double ans = a/(1.0-r);
+
+    cout << fixed << setprecision(4) << ans << "\n";
+}
+
+int main(){
+    int t;
+    if (cin >> t) {
+        while (t--) {
+            solve();
+        }
+    }
+    return 0;
+}
