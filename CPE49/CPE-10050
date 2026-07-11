@@ -1,0 +1,41 @@
+// Hartals (UVA 10050)
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main(){
+
+    int t;
+    cin >> t;
+
+    while(t--){
+
+        int n, p;
+        cin >> n >> p;
+
+        vector<int> hartal(p);
+        for(int i = 0; i < p; i++){
+            cin >> hartal[i];
+        }
+
+        int lost = 0;
+
+        for(int day = 1; day <= n; day++){
+            // 判斷是否為假日
+            if (day%7 == 6 || day%7 == 0) {
+                continue;
+            }
+            for (int i = 0; i < p; i++) {
+
+                if (day%hartal[i] == 0) {
+                    lost++;
+                    break; 
+                }
+            }
+        }
+        cout << lost << "\n";
+    }
+    return 0;
+}
