@@ -29,5 +29,38 @@ int main()
         }
         cout << sum << endl;
     }
-
 }
+
+/*
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int main(){
+
+    int t;
+    cin >> t;
+
+    while(t--){
+        int r;
+        cin >> r;
+
+        vector<int> street(r);
+        for(int i = 0; i < r; i++){
+            cin >> street[i];
+        }
+        sort(street.begin(), street.end());
+
+        int median = street[r/2];
+        int total_distance = 0;
+
+        for(int i = 0; i < r; i++){
+            total_distance += abs(street[i] - median);
+        }
+        cout << total_distance << endl;
+    }
+}
+*/
