@@ -1,0 +1,15 @@
+// Hashmat the Brave Warrior (UVA 10055)
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main(){
+    long long a, b;
+    while(cin >> a >> b){
+        long long ans = abs(a - b);
+        cout << ans << endl;
+    }
+    return 0;
+}
