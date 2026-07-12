@@ -1,0 +1,49 @@
+// Tell me the frequencies! (UVA 10062)
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+struct CharFrequence {
+    int ascii;
+    int freq;
+};
+
+bool compare(CharFrequence a, CharFrequence b) {
+    if (a.freq != b.freq) return a.freq < b.freq;
+    return a.ascii > b.ascii; 
+}
+
+int main() {
+    string s;
+    bool isFirst = true;
+
+    while (getline(cin, s)) {
+        
+        if (!isFirst) {
+            cout << "\n";  // 測資之間要有一行空白隔開
+        }
+        isFirst = false;
+
+        CharFrequence chars[128];
+        for (int i = 0; i < 128; i++) {
+            chars[i].ascii = i;
+            chars[i].freq = 0;
+        }
+        
+        for (int i = 0; i < s.length(); i++) {
+            chars[s[i]].freq++; 
+        }
+
+        sort(chars, chars+128, compare);
+
+        for (int i = 0; i < 128; i++) {
+            if (chars[i].freq > 0) {
+                cout << chars[i].ascii << " " << chars[i].freq << "\n";
+            }
+        }
+    }
+    return 0;
+}
