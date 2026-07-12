@@ -1,0 +1,36 @@
+// A mid-summer night's dream (UVA 10057)
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int n;
+    while (cin >> n) {
+        vector<int> nums(n);
+        for (int i = 0; i < n; ++i) {
+            cin >> nums[i];
+        }
+
+        sort(nums.begin(), nums.end());
+
+        // 找中位數，選最小（也就是mid_left）
+        int min_A = nums[(n-1)/2];
+        int max_A = nums[n/2];
+
+        // 介於左中位數與右中位數之間，總距離最小
+        int count = 0;
+        for(int i = 0; i < n; i++){
+            if(nums[i]>=min_A && nums[i]<=max_A) count++;
+        }
+        
+        // 總共有幾種整數 A
+        int possible = max_A - min_A + 1;
+
+        cout << min_A << " " << count << " " << possible << "\n";
+    }
+    
+    return 0;
+}
